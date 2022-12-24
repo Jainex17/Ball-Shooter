@@ -64,13 +64,13 @@ class Enemy {
 
 }
 
-const player = new Player(canvas.width/2,canvas.height/2,50,'blue');
+const player = new Player(canvas.width/2,canvas.height/2,40,'blue');
 let projectiles = [];
 let enimies = [];
 
 function spawnenemies(){
     setInterval(()=>{
-        const radius = Math.random() * (40 - 8) + 8;
+        const radius = Math.random() * (40 - 20) + 20;
         let x;
         let y;
         
@@ -94,15 +94,36 @@ function spawnenemies(){
 }
 
 // refrese page every frame
+let animationID
 function animation(){
-    requestAnimationFrame(animation);
+    animationID = requestAnimationFrame(animation);
     c.clearRect(0,0,canvas.width,canvas.height)
     player.draw();
     projectiles.forEach(projectile=>{
         projectile.update();
     })
-    enimies.forEach(enemy=>{
+    enimies.forEach((enemy,eindex)=>{
         enemy.update();
+
+        const playerdist = Math.hypot(player.x - enemy.x , player.y - enemy.y);
+        // enemy touch player
+        if(playerdist - enemy.radius - player.radius < 1){
+            cancelAnimationFrame(animationID);
+            // setTimeout(()=>{
+            //     enimies.splice(eindex,1);    
+            // },0);
+        }
+
+        projectiles.forEach((projectile,pindex)=>{
+            const dist = Math.hypot(projectile.x - enemy.x , projectile.y - enemy.y);
+            // object touch 
+            if(dist - enemy.radius - projectile.radius < 1){
+                setTimeout(()=>{
+                    enimies.splice(eindex,1);
+                    projectiles.splice(pindex,1);    
+                },0);
+            }
+        })
     })
 }
     
