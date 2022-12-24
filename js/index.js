@@ -1,5 +1,10 @@
 const canvas = document.querySelector("canvas");
 const c = canvas.getContext('2d');
+const scoreel = document.getElementById("score");
+
+let score = 0;
+// scoreel.innerHTML = parseInt(score)
+
 
 canvas.width= innerWidth ;
 canvas.height= innerHeight;
@@ -124,6 +129,7 @@ function spawnenemies(){
 // refrese page every frame
 let animationID
 function animation(){
+    
     animationID = requestAnimationFrame(animation);
     c.fillStyle = "rgb(0,0,0,0.1)";
     c.fillRect(0,0,canvas.width,canvas.height)
@@ -136,7 +142,6 @@ function animation(){
             partical.update();
         }
     })
-    console.log(particals);
     projectiles.forEach((projectile,pindex)=>{
         projectile.update();
 
@@ -165,6 +170,7 @@ function animation(){
             const dist = Math.hypot(projectile.x - enemy.x , projectile.y - enemy.y);
             // projectile touch enemy
             if(dist - enemy.radius - projectile.radius < 1){
+                
                 //create particals
                 for (let i = 0; i < 8; i++) {
                     particals.push(new Partical(projectile.x,
@@ -177,6 +183,8 @@ function animation(){
                         }))
                 }
                 if(enemy.radius - 20  > 5){
+                    score += 100;
+                    scoreel.innerHTML = score
                     gsap.to(enemy,{
                         radius: enemy.radius - 10
                     })
@@ -184,7 +192,10 @@ function animation(){
                     setTimeout(()=>{
                         projectiles.splice(pindex,1);    
                     },0);
-                }else{       
+                }//remove from enemy from scene
+                else{       
+                    score += 250;
+                    scoreel.innerHTML = score
                     setTimeout(()=>{
                         enimies.splice(eindex,1);
                         projectiles.splice(pindex,1);    
