@@ -1,13 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 *{
     padding: 0;
     margin: 0;
     overflow: hidden;
+    font-family: 'Press Start 2P', cursive;;
 }
-div{
+body{
+    background-color: black
+}
+.scorediv{
     user-select: none;
     position: absolute;
     left: 20px;
-    top: 20px;
+    top: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,4 +22,36 @@ div:first-child{
     color: white;
     font-size: 26px;
     padding: 0 5px;
+    font-size: 24px;
+}
+.menu{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    left: 35%;
+    top: 37%;
+    width: 30%;
+    height: 25%;
+    border-radius: 30px;
+}
+.menu h1{
+    font-size: 40px;
+    padding: 10px 0;
+}
+.menu p{
+    padding: 8px 0;
+    font-size: 20px;
+}
+.menu button{
+    margin: 10px 0;
+    width: 70%;
+    height: 40px;
+    background-color: blueviolet;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
 }

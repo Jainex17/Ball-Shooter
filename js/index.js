@@ -1,7 +1,9 @@
 const canvas = document.querySelector("canvas");
 const c = canvas.getContext('2d');
 const scoreel = document.getElementById("score");
-
+const endscore = document.getElementById("endscore");
+const menu = document.querySelector('.menu');
+const startbtn = document.getElementById('startbtn');
 let score = 0;
 // scoreel.innerHTML = parseInt(score)
 
@@ -96,10 +98,18 @@ class Partical {
     }
 }
 
-const player = new Player(canvas.width/2,canvas.height/2,40,'white');
+let player = new Player(canvas.width/2,canvas.height/2,40,'white');
 let projectiles = [];
 let enimies = [];
 let particals = [];
+
+function init(){
+    player = new Player(canvas.width/2,canvas.height/2,40,'white');
+    projectiles = [];
+    enimies = [];
+    particals = [];
+    score = 0;
+}
 
 function spawnenemies(){
     setInterval(()=>{
@@ -159,11 +169,12 @@ function animation(){
 
         const playerdist = Math.hypot(player.x - enemy.x , player.y - enemy.y);
         // enemy touch player
+        //end game
         if(playerdist - enemy.radius - player.radius < 1){
+            endscore.innerHTML = score;
+            scoreel.innerHTML = 0;
             cancelAnimationFrame(animationID);
-            // setTimeout(()=>{
-            //     enimies.splice(eindex,1);    
-            // },0);
+            menu.style.display = 'flex';
         }
 
         projectiles.forEach((projectile,pindex)=>{
@@ -175,7 +186,7 @@ function animation(){
                 for (let i = 0; i < 8; i++) {
                     particals.push(new Partical(projectile.x,
                         projectile.y,
-                        Math.random() * 2,
+                        Math.random() * 5,
                         enemy.color,
                         {
                             x:Math.random() - 0.5 * (Math.random() * 6),
@@ -215,7 +226,9 @@ window.addEventListener("click",(e)=>{
 
     projectiles.push(new Projectile(canvas.width/2,canvas.height/2,10,'white',{x:Math.cos(angle) * 5,y:Math.sin(angle) * 5}))
 })
-
-
-animation();    
-spawnenemies();
+startbtn.addEventListener("click",()=>{
+    init();
+    animation();    
+    spawnenemies();
+    menu.style.display = 'none';
+})
