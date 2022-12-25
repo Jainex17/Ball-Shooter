@@ -55,3 +55,16 @@ div:first-child{
     border-radius: 30px;
     cursor: pointer;
 }
+
+@media only screen and (max-width:300px){
+    .scorediv{
+        display: flex;
+        justify-items: center;
+        width: 100%;
+        left: 0;
+    }
+    .menu{
+        width: 70%;
+        left: 18%;
+    }
+}
