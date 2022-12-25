@@ -117,7 +117,7 @@ function init(){
     score = 0;
 }
 if(devicewidth<400){
-    spawntime = 2000
+    spawntime = 1500
 }
 function spawnenemies(){
     setInterval(()=>{
