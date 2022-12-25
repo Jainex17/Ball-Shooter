@@ -5,6 +5,8 @@ const endscore = document.getElementById("endscore");
 const menu = document.querySelector('.menu');
 const startbtn = document.getElementById('startbtn');
 let score = 0;
+var devicewidth = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+let spawntime = 1200
 // scoreel.innerHTML = parseInt(score)
 
 //music
@@ -114,7 +116,9 @@ function init(){
     particals = [];
     score = 0;
 }
-
+if(devicewidth<400){
+    spawntime = 2000
+}
 function spawnenemies(){
     setInterval(()=>{
         const radius = Math.random() * (40 - 20) + 20;
@@ -137,7 +141,7 @@ function spawnenemies(){
     
         const valocity = {x:Math.cos(angle),y:Math.sin(angle)}
         enimies.push(new Enemy(x,y,radius,color,valocity))
-    },1200);
+    },spawntime);
 }
 
 // refrese page every frame

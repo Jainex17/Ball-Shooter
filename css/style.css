@@ -56,11 +56,11 @@ div:first-child{
     cursor: pointer;
 }
 
-@media only screen and (max-width:300px){
+@media only screen and (max-width:340px){
     .scorediv{
         display: flex;
         justify-items: center;
-        width: 100%;
+        width: 95%;
         left: 0;
     }
     .menu{
