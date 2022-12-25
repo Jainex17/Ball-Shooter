@@ -7,6 +7,10 @@ const startbtn = document.getElementById('startbtn');
 let score = 0;
 // scoreel.innerHTML = parseInt(score)
 
+//music
+// let backgroundmusic1 = new Audio('../music/Glory-Eternal.mp3');
+let backgroundmusic = new Audio('../music/Powerful-Trap-.mp3');
+let firesound = new Audio('../music/fire-magic-6947.mp3');
 
 canvas.width= innerWidth ;
 canvas.height= innerHeight;
@@ -133,7 +137,7 @@ function spawnenemies(){
     
         const valocity = {x:Math.cos(angle),y:Math.sin(angle)}
         enimies.push(new Enemy(x,y,radius,color,valocity))
-    },1000);
+    },1200);
 }
 
 // refrese page every frame
@@ -171,6 +175,7 @@ function animation(){
         // enemy touch player
         //end game
         if(playerdist - enemy.radius - player.radius < 1){
+            backgroundmusic.pause();
             endscore.innerHTML = score;
             scoreel.innerHTML = 0;
             cancelAnimationFrame(animationID);
@@ -219,14 +224,16 @@ function animation(){
 }
     
 window.addEventListener("click",(e)=>{
+    firesound.play();
     const angle = Math.atan2(
         e.clientY - canvas.height / 2,
         e.clientX - canvas.width / 2
-    );
-
+        );
     projectiles.push(new Projectile(canvas.width/2,canvas.height/2,10,'white',{x:Math.cos(angle) * 5,y:Math.sin(angle) * 5}))
+    
 })
 startbtn.addEventListener("click",()=>{
+    backgroundmusic.play();
     init();
     animation();    
     spawnenemies();
