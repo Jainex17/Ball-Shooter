@@ -1,4 +1,15 @@
-A simple ball shooter game using javascript language
+# Ball Shooter
+
+"Ball Shooter" is a HTML5 Canvas Game. It is built on HTML5, and JS. About the game? There's a player in center of screen, and enemy coming anywhere from screen. You just have to aim and click to fire balls.
+
+This works on most of the modern browser. This game will only work on Desktops and Laptops.
+
+You can play the game here: jainex17.github.io/Ball-Shooter/
+
+Enjoy!
+
+Here are some screenshots of the Game :
+
 
 ![image](https://user-images.githubusercontent.com/81921291/209447514-215d6f4c-2d62-4e3b-a3b3-2f3531076c7e.png)
 
