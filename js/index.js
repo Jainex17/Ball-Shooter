@@ -1,9 +1,15 @@
 const canvas = document.querySelector("canvas");
 const c = canvas.getContext('2d');
+
+const scorediv = document.querySelector(".scorediv");
 const scoreel = document.getElementById("score");
 const endscore = document.getElementById("endscore");
 const menu = document.querySelector('.menu');
 const startbtn = document.getElementById('startbtn');
+const title = document.querySelector('.title');
+
+
+
 let score = 0;
 var devicewidth = (window.innerWidth > 0) ? window.innerWidth : screen.width;
 let spawntime = 1200
@@ -184,6 +190,8 @@ function animation(){
             scoreel.innerHTML = 0;
             cancelAnimationFrame(animationID);
             menu.style.display = 'flex';
+            title.style.display = 'flex';
+            scorediv.style.display = 'none';
         }
 
         projectiles.forEach((projectile,pindex)=>{
@@ -242,4 +250,6 @@ startbtn.addEventListener("click",()=>{
     animation();    
     spawnenemies();
     menu.style.display = 'none';
+    title.style.display = 'none';
+    scorediv.style.display = 'flex';
 })
