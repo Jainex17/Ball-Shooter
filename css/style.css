@@ -72,8 +72,12 @@ div:first-child{
         width: 95%;
         left: 0;
     }
+    .title h1{
+        font-size: 25px;
+    }
     .menu{
         width: 70%;
         left: 18%;
+        padding: 20px 0;
     }
 }
