@@ -4,7 +4,7 @@
 
 This works on most of the modern browser. This game will only work on Desktops and Laptops.
 
-You can play the game here: [Click Here](jainex17.github.io/Ball_Shooter/)
+You can play the game here: [Click Here](https://jainex17.github.io/Ball_Shooter/)
 
 Enjoy!
 
